@@ -6,8 +6,10 @@ use cse\helpers\Session;
 
 // Example: start
 // true
-Session::start();
+var_dump(Session::start());
+echo PHP_EOL;
 
 // Example: set
 // ['test_key' => 'test_value']
-Session::set('test_key', 'test_value');
+var_dump(Session::set('test_key', 'test_value'));
+echo PHP_EOL;
