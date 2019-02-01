@@ -57,6 +57,18 @@ git clone https://github.com/cs-eliseev/helpers-session.git
 
 [Download the latest release here](https://github.com/cs-eliseev/helpers-session/archive/master.zip).
 
+## Usage
+
+The class consists of static methods that are conveniently used in any project. See example [examples-session.php](https://github.com/cs-eliseev/helpers-session/blob/master/examples/examples-session.php).
+
+**SESSION start**
+
+Example:
+```php
+Session::start();
+// true
+```
+
 
 ## License
 
