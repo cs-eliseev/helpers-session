@@ -1,0 +1,31 @@
+{
+    "name": "cse/helpers-session",
+    "description": "The helpers allows you to easily manage session data. START, SET, GET DELETE, HAS method session - all this is available in this library.",
+    "keywords": ["session", "cse", "cs-eliseev", "framework", "basic", "library", "project"],
+    "homepage": "https://github.com/cs-eliseev/helpers-session",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Eliseev Alexey",
+            "email": "a.k.eliseev@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=7.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "cse\\helpers\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "": "tests/"
+        }
+    }
+}
