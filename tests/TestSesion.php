@@ -12,4 +12,18 @@ class TestSesion extends TestCase
     {
         $this->assertTrue(Session::start());
     }
+
+    /**
+     * @param string $name
+     * @param $value
+     *
+     * @dataProvider providerSet
+     *
+     * @runInSeparateProcess
+     */
+    public function testSet(string $name, $value): void
+    {
+        Session::set($name, $value);
+        $this->assertTrue(!empty($_SESSION[$name]));
+    }
 }
