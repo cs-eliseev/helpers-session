@@ -26,4 +26,17 @@ class TestSesion extends TestCase
         Session::set($name, $value);
         $this->assertTrue(!empty($_SESSION[$name]));
     }
+
+    /**
+     * @return array
+     */
+    public function providerSet(): array
+    {
+        return [
+            [
+                'test_key',
+                'test_value'
+            ],
+        ];
+    }
 }
