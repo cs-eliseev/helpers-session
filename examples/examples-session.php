@@ -7,3 +7,7 @@ use cse\helpers\Session;
 // Example: start
 // true
 Session::start();
+
+// Example: set
+// ['test_key' => 'test_value']
+Session::set('test_key', 'test_value');
