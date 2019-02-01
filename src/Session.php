@@ -23,4 +23,16 @@ class Session
 
         return session_start($option);
     }
+
+    /**
+     * Set session by key name
+     *
+     * @param string $name
+     * @param $value
+     */
+    public static function set(string $name, $value): void
+    {
+        self::start();
+        $_SESSION[$name] = $value;
+    }
 }
