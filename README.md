@@ -69,6 +69,14 @@ Session::start();
 // true
 ```
 
+**SESSION set**
+
+Example:
+```php
+Session::set('test_key', 'test_value');
+// ['test_key' => 'test_value']
+```
+
 
 ## License
 
