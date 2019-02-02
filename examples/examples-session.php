@@ -18,3 +18,8 @@ echo PHP_EOL;
 // true
 var_dump(Session::has('example_key'));
 echo PHP_EOL;
+
+// Example: get
+// example_value
+var_dump(Session::get('example_key'));
+echo PHP_EOL;
