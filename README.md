@@ -73,8 +73,8 @@ Session::start();
 
 Example:
 ```php
-Session::set('test_key', 'test_value');
-// ['test_key' => 'test_value']
+Session::set('example_key', 'example_value');
+// ['example_key' => 'example_value']
 ```
 
 
