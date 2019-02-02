@@ -5,6 +5,19 @@ The helpers allows you to easily manage session data. START, SET, GET DELETE, HA
 
 Project repository: https://github.com/cs-eliseev/helpers-session
 
+```php
+Session::set(
+    'example_key',
+    Session::getNotEmpty('example_key', 'default_value')
+);
+
+if (is_int(Session::get('example_key'))) {
+    Session::remove('example_key');
+}
+
+$is_not_int = Session::has('example_key');
+```
+
 ***
 
 
