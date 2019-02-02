@@ -77,6 +77,14 @@ Session::set('example_key', 'example_value');
 // ['example_key' => 'example_value']
 ```
 
+**HAS session**
+
+Example:
+```php
+Session::has('example_key');
+// true
+```
+
 
 ## License
 
