@@ -77,4 +77,43 @@ class TestSesion extends TestCase
                 false,
             ],
         ];
+    }
+
+
+    /**
+     * @param string $name
+     * @param bool $set
+     *
+     * @dataProvider providerRemove
+     *
+     * @runInSeparateProcess
+     */
+    public function testRemove(string $name, bool $set): void
+    {
+        if ($set) {
+            Session::set($name, $name);
+        }
+        Session::remove($name);
+        $this->assertFalse(Session::has($name));
+    }
+
+    /**
+     * @return array
+     */
+    public function providerRemove(): array
+    {
+        $key1 = uniqid('key1_');
+        $key2 = uniqid('key2_');
+
+        return [
+            [
+                $key1,
+                true,
+            ],
+            [
+                $key2,
+                false,
+            ],
+        ];
+    }
 }
