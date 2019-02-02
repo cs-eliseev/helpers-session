@@ -120,6 +120,15 @@ Cookie::get('example_key', 'default_value');
 // default_value
 ```
 
+**REMOVE session**
+
+Example:
+```php
+Session::remove('example_key');
+Session::has('example_key');
+// false
+```
+
 
 ## License
 
