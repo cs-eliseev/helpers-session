@@ -48,4 +48,18 @@ class Session
 
         return array_key_exists($name, $_SESSION);
     }
+
+    /**
+     * Get session value by key name
+     *
+     * @param string $name
+     * @param null $default
+     * @return null|mixed
+     */
+    public static function get(string $name, $default = null)
+    {
+        self::start();
+
+        return self::has($name) ? $_SESSION[$name] : $default;
+    }
 }
