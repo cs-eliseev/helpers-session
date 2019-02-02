@@ -81,6 +81,48 @@ class TestSesion extends TestCase
 
     /**
      * @param string $name
+     * @param $value
+     * @param null|string $default
+     * @param bool $set
+     *
+     * @dataProvider providerGet
+     *
+     * @runInSeparateProcess
+     */
+    public function testGet(string $name, $value, ?string $default, bool $set): void
+    {
+        if ($set) {
+            Session::set($name, $value);
+        } else {
+            Session::remove($name);
+        }
+
+        $this->assertEquals($value, Session::get($name, $default));
+    }
+
+    /**
+     * @return array
+     */
+    public function providerGet(): array
+    {
+        return [
+            [
+                'test_key',
+                'test_value',
+                null,
+                true,
+            ],
+            [
+                'test_default_key',
+                'default_value',
+                'default_value',
+                false,
+            ],
+        ];
+    }
+
+    /**
+     * @param string $name
      * @param $default
      * @param bool $set
      *
