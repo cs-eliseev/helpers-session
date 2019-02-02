@@ -39,4 +39,42 @@ class TestSesion extends TestCase
             ],
         ];
     }
+
+    /**
+     * @param string $name
+     * @param $set
+     * @param bool $expected
+     *
+     * @dataProvider providerHas
+     *
+     * @runInSeparateProcess
+     */
+    public function testHas(string $name, $set, bool $expected): void
+    {
+        if ($set) {
+            Session::set($name, $name);
+        } else {
+            Session::remove($name);
+        }
+
+        $this->assertEquals($expected, Session::has($name));
+    }
+
+    /**
+     * @return array
+     */
+    public function providerHas(): array
+    {
+        return [
+            [
+                'test_key',
+                true,
+                true,
+            ],
+            [
+                'test_key',
+                false,
+                false,
+            ],
+        ];
 }
