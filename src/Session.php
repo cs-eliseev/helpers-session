@@ -35,4 +35,17 @@ class Session
         self::start();
         $_SESSION[$name] = $value;
     }
+
+    /**
+     * Has session key name
+     *
+     * @param string $name
+     * @return bool
+     */
+    public static function has(string $name): bool
+    {
+        self::start();
+
+        return array_key_exists($name, $_SESSION);
+    }
 }
