@@ -62,4 +62,17 @@ class Session
 
         return self::has($name) ? $_SESSION[$name] : $default;
     }
+
+    /**
+     * Get session not empty value by key name
+     *
+     * @param string $name
+     * @param null $default
+     * @return mixed|null
+     */
+    public static function getNotEmpty(string $name, $default = null)
+    {
+        $value = self::get($name);
+        return !empty($value) ? $value : $default;
+    }
 }
