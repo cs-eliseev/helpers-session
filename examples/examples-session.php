@@ -13,3 +13,8 @@ echo PHP_EOL;
 // ['example_key' => 'example_value']
 var_dump(Session::set('example_key', 'example_value'));
 echo PHP_EOL;
+
+// Example: has
+// true
+var_dump(Session::has('example_key'));
+echo PHP_EOL;
