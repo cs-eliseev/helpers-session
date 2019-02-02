@@ -79,6 +79,43 @@ class TestSesion extends TestCase
         ];
     }
 
+    /**
+     * @param string $name
+     * @param $default
+     * @param bool $set
+     *
+     * @dataProvider providerGetNotEmpty
+     *
+     * @runInSeparateProcess
+     */
+    public function testGetNotEmpty(string $name, $default, bool $set): void
+    {
+        if ($set) {
+            Session::set($name, $name);
+        } else {
+            Session::remove($name);
+        }
+        $this->assertEquals($name, Session::getNotEmpty($name, $default));
+    }
+
+    /**
+     * @return array
+     */
+    public function providerGetNotEmpty(): array
+    {
+        return [
+            [
+                'test_get_not_empty',
+                null,
+                true,
+            ],
+            [
+                'test_default',
+                'test_default',
+                false,
+            ],
+        ];
+    }
 
     /**
      * @param string $name
