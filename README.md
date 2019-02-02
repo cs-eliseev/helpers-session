@@ -85,6 +85,19 @@ Session::has('example_key');
 // true
 ```
 
+**GET session**
+
+Example:
+```php
+Session::has('example_key');
+// example_value
+```
+
+Set default value:
+```php
+Cookie::get('example_key_2', 'example_value_2');
+// example_value_2
+```
 
 ## License
 
