@@ -29,3 +29,9 @@ echo PHP_EOL;
 Session::set('example_default', '');
 var_dump(Session::get('example_default', 'default_value'));
 echo PHP_EOL;
+
+// Example: remove
+// false
+Session::remove('example_key');
+var_dump(Session::has('example_key'));
+echo PHP_EOL;
