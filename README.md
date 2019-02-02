@@ -89,15 +89,37 @@ Session::has('example_key');
 
 Example:
 ```php
-Session::has('example_key');
+Session::get('example_key');
 // example_value
 ```
 
-Set default value:
+Set default value is not exist session:
 ```php
 Cookie::get('example_key_2', 'example_value_2');
 // example_value_2
 ```
+
+**GET NOT EMPTY session**
+
+Example:
+```php
+Session::get('example_key', 'default_value');
+// example_value
+```
+
+Set default value is not exist session:
+```php
+Cookie::get('example_key_2', 'default_value');
+// default_value
+```
+
+Set default value empty session data:
+```php
+Session::set('example_key', '');
+Cookie::get('example_key', 'default_value');
+// default_value
+```
+
 
 ## License
 
