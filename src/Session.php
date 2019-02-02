@@ -75,4 +75,17 @@ class Session
         $value = self::get($name);
         return !empty($value) ? $value : $default;
     }
+
+    /**
+     * Remove session by key name
+     * @param string $name
+     */
+    public static function remove(string $name): void
+    {
+        self::start();
+
+        if (self::has($name)) {
+            unset($_SESSION[$name]);
+        }
+    }
 }
