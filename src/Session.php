@@ -15,6 +15,7 @@ class Session
      * Start session
      *
      * @param array $option
+     *
      * @return bool
      */
     public static function start(array $option = []): bool
@@ -40,6 +41,7 @@ class Session
      * Has session key name
      *
      * @param string $name
+     *
      * @return bool
      */
     public static function has(string $name): bool
@@ -54,6 +56,7 @@ class Session
      *
      * @param string $name
      * @param null $default
+     *
      * @return null|mixed
      */
     public static function get(string $name, $default = null)
@@ -68,6 +71,7 @@ class Session
      *
      * @param string $name
      * @param null $default
+     *
      * @return mixed|null
      */
     public static function getNotEmpty(string $name, $default = null)
@@ -78,6 +82,7 @@ class Session
 
     /**
      * Remove session by key name
+     *
      * @param string $name
      */
     public static function remove(string $name): void
