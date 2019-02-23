@@ -36,6 +36,7 @@ CSE HELPERS was created for the rapid development of web applications.
 * [Request CSE helpers](https://github.com/cs-eliseev/helpers-request)
 * [Session CSE helpers](https://github.com/cs-eliseev/helpers-session)
 * [Date CSE helpers](https://github.com/cs-eliseev/helpers-date)
+* [IP CSE helpers](https://github.com/cs-eliseev/helpers-ip)
 
 Below you will find some information on how to init library and perform common commands.
 
