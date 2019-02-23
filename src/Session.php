@@ -88,7 +88,7 @@ class Session
     {
         $value = self::get($name);
 
-        return !empty($value) ? $value : $default;
+        return empty($value) ? $default : $value;
     }
 
     /**
