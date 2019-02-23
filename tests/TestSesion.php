@@ -387,4 +387,16 @@ class TestSesion extends TestCase
         Session::destroy();
         $this->assertFalse(session_status() === PHP_SESSION_ACTIVE);
     }
+
+    /**
+     * @runInSeparateProcess
+     */
+    public function testIsStart(): void
+    {
+        $this->assertFalse(Session::isStart());
+        $this->assertTrue(Session::start());
+        $this->assertTrue(Session::isStart());
+        Session::destroy();
+        $this->assertFalse(Session::isStart());
+    }
 }
