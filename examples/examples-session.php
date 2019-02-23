@@ -30,6 +30,11 @@ Session::set('example_default', '');
 var_dump(Session::getNotEmpty('example_default', 'default_value'));
 echo PHP_EOL;
 
+// Example: get all data
+// ['example_key' => 'example_value', 'example_default' => '']
+var_dump(Session::all());
+echo PHP_EOL;
+
 // Example: remove
 // false
 Session::remove('example_key');
