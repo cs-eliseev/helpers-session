@@ -335,4 +335,46 @@ class TestSesion extends TestCase
 
         $this->assertEquals(['test_1' => 'test_1', 'cse' => ['test_2' => 'test_2']], Session::all());
     }
+
+    /**
+     * @param string $name
+     * @param null|string $multiKey\
+     *
+     * @dataProvider providerClear
+     *
+     * @runInSeparateProcess
+     */
+    public function testClear(string $name, ?string $multiKey): void
+    {
+        if (!is_null($multiKey)) Session::setMultiKey($multiKey);
+
+        Session::set($name, $name);
+
+        $this->assertTrue(empty(Session::all()));
+    }
+
+    /**
+     * @return array
+     */
+    public function providerClear(): array
+    {
+        return [
+            [
+                'test_name',
+                null
+            ],
+            [
+                [],
+                null
+            ],
+            [
+                'test_name',
+                'cse'
+            ],
+            [
+                [],
+                'cse'
+            ],
+        ];
+    }
 }
