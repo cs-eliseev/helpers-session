@@ -41,15 +41,15 @@ Session::remove('example_key');
 var_dump(Session::has('example_key'));
 echo PHP_EOL;
 
+// Example: clear
+// false
+Session::clear();
+var_dump(Session::all());
+echo PHP_EOL;
 
 
 // Example: multiKey
 Session::setMultiKey('cse');
-
-// Example: start
-// true
-var_dump(Session::start());
-echo PHP_EOL;
 
 // Example: set
 // ['example_key' => 'example_value']
@@ -84,4 +84,11 @@ var_dump($_SESSION);
 // false
 Session::remove('example_key');
 var_dump(Session::has('example_key'));
+echo PHP_EOL;
+
+// Example: clear
+// false
+$_SESSION['example'] = 1;
+Session::clear();
+var_dump($_SESSION);
 echo PHP_EOL;
