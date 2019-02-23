@@ -12,6 +12,7 @@ echo PHP_EOL;
 // Example: set
 // ['example_key' => 'example_value']
 Session::set('example_key', 'example_value');
+var_dump($_SESSION);
 echo PHP_EOL;
 
 // Example: has
@@ -42,7 +43,7 @@ var_dump(Session::has('example_key'));
 echo PHP_EOL;
 
 // Example: clear
-// false
+// []
 Session::clear();
 var_dump(Session::all());
 echo PHP_EOL;
@@ -78,6 +79,7 @@ var_dump(Session::all());
 echo PHP_EOL;
 
 // Example all session data
+// ['cse' => ['example_key' => 'example_value', 'example_default' = '']]
 var_dump($_SESSION);
 
 // Example: remove
@@ -87,7 +89,7 @@ var_dump(Session::has('example_key'));
 echo PHP_EOL;
 
 // Example: clear
-// false
+// ['example' = 1]
 $_SESSION['example'] = 1;
 Session::clear();
 var_dump($_SESSION);
