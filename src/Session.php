@@ -130,4 +130,16 @@ class Session
     {
         return is_null(self::$multiKey) ? $_SESSION : $_SESSION[self::$multiKey];
     }
+
+    /**
+     * Clear session
+     */
+    public static function clear(): void
+    {
+        if (is_null(self::$multiKey)) {
+            session_unset();
+        } else {
+            unset($_SESSION[self::$multiKey]);
+        }
+    }
 }
