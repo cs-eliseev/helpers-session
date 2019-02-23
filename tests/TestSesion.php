@@ -322,4 +322,17 @@ class TestSesion extends TestCase
             ],
         ];
     }
+
+    /**
+     * @runInSeparateProcess
+     */
+    public function testSetMultiKey(): void
+    {
+        Session::set('test_1', 'test_1');
+        Session::setMultiKey('cse');
+        Session::set('test_2', 'test_2');
+        Session::setMultiKey('');
+
+        $this->assertEquals(['test_1' => 'test_1', 'cse' => ['test_2' => 'test_2']], Session::all());
+    }
 }
