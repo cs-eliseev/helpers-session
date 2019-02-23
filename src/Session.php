@@ -25,7 +25,7 @@ class Session
      */
     public static function start(array $option = []): bool
     {
-        if (session_status() === PHP_SESSION_ACTIVE) return true;
+        if (self::isStart()) return true;
 
         return session_start($option);
     }
@@ -149,5 +149,15 @@ class Session
     public static function destroy(): void
     {
         session_destroy();
+    }
+
+    /**
+     * Is start session
+     *
+     * @return bool
+     */
+    public static function isStart(): bool
+    {
+        return session_status() === PHP_SESSION_ACTIVE;
     }
 }
