@@ -377,4 +377,14 @@ class TestSesion extends TestCase
             ],
         ];
     }
+
+    /**
+     * @runInSeparateProcess
+     */
+    public function testDestroy(): void
+    {
+        $this->assertTrue(Session::start());
+        Session::destroy();
+        $this->assertFalse(session_status() === PHP_SESSION_ACTIVE);
+    }
 }
