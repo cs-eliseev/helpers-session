@@ -11,7 +11,7 @@ echo PHP_EOL;
 
 // Example: set
 // ['example_key' => 'example_value']
-var_dump(Session::set('example_key', 'example_value'));
+Session::set('example_key', 'example_value');
 echo PHP_EOL;
 
 // Example: has
@@ -27,7 +27,7 @@ echo PHP_EOL;
 // Example: get not empty
 // default_value
 Session::set('example_default', '');
-var_dump(Session::get('example_default', 'default_value'));
+var_dump(Session::getNotEmpty('example_default', 'default_value'));
 echo PHP_EOL;
 
 // Example: remove
