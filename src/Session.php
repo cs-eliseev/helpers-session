@@ -12,6 +12,11 @@ namespace cse\helpers;
 class Session
 {
     /**
+     * @var null|string
+     */
+    protected static $multiKey = null;
+
+    /**
      * Start session
      *
      * @param array $option
@@ -34,7 +39,12 @@ class Session
     public static function set(string $name, $value): void
     {
         self::start();
-        $_SESSION[$name] = $value;
+
+        if (is_null(self::$multiKey)) {
+            $_SESSION[$name] = $value;
+        } else {
+            $_SESSION[self::$multiKey][$name] = $value;
+        }
     }
 
     /**
@@ -48,7 +58,7 @@ class Session
     {
         self::start();
 
-        return array_key_exists($name, $_SESSION);
+        return array_key_exists($name, self::all());
     }
 
     /**
@@ -63,7 +73,7 @@ class Session
     {
         self::start();
 
-        return self::has($name) ? $_SESSION[$name] : $default;
+        return self::has($name) ? self::all()[$name] : $default;
     }
 
     /**
@@ -77,6 +87,7 @@ class Session
     public static function getNotEmpty(string $name, $default = null)
     {
         $value = self::get($name);
+
         return !empty($value) ? $value : $default;
     }
 
@@ -90,7 +101,33 @@ class Session
         self::start();
 
         if (self::has($name)) {
-            unset($_SESSION[$name]);
+            if (is_null(self::$multiKey)) {
+                unset($_SESSION[$name]);
+            } else {
+                unset($_SESSION[self::$multiKey][$name]);
+            }
         }
+    }
+
+    /**
+     * Set multi key
+     *
+     * @example $_SESSION[$multiKey][$key]
+     *
+     * @param null|string $multiKey
+     */
+    public static function setMultiKey(?string $multiKey): void
+    {
+        self::$multiKey = empty($multiKey) ? null : $multiKey;
+    }
+
+    /**
+     * Get all session data
+     *
+     * @return null|array
+     */
+    public static function all(): ?array
+    {
+        return is_null(self::$multiKey) ? $_SESSION : $_SESSION[self::$multiKey];
     }
 }
