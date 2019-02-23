@@ -142,4 +142,12 @@ class Session
             unset($_SESSION[self::$multiKey]);
         }
     }
+
+    /**
+     * Destroy session
+     */
+    public static function destroy(): void
+    {
+        session_destroy();
+    }
 }
