@@ -195,4 +195,38 @@ class TestSesion extends TestCase
             ],
         ];
     }
+
+    /**
+     * @param array $names
+     * @param array $expected
+     *
+     * @dataProvider providerAll
+     *
+     * @runInSeparateProcess
+     */
+    public function testAll(array $names, array $expected): void
+    {
+        foreach ($names as $name) {
+            Session::set($name, $name);
+        }
+
+        $this->assertEquals($expected, Session::all());
+    }
+
+    /**
+     * @return array
+     */
+    public function providerAll(): array
+    {
+        return [
+            [
+                ['test_name_1', 'test_name_2'],
+                ['test_name_1' => 'test_name_1', 'test_name_2' => 'test_name_2'],
+            ],
+            [
+                [],
+                [],
+            ],
+        ];
+    }
 }
