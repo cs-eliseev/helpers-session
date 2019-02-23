@@ -16,14 +16,18 @@ class TestSesion extends TestCase
     /**
      * @param string $name
      * @param $value
+     * @param null|string $multiKey
      *
      * @dataProvider providerSet
      *
      * @runInSeparateProcess
      */
-    public function testSet(string $name, $value): void
+    public function testSet(string $name, $value, ?string $multiKey): void
     {
+        if (!is_null($multiKey)) Session::setMultiKey($multiKey);
+
         Session::set($name, $value);
+
         $this->assertTrue(!empty($_SESSION[$name]));
     }
 
@@ -35,13 +39,20 @@ class TestSesion extends TestCase
         return [
             [
                 'test_key',
-                'test_value'
+                'test_value',
+                null
+            ],
+            [
+                'test_key',
+                'test_value',
+                'cse'
             ],
         ];
     }
 
     /**
      * @param string $name
+     * @param null|string $multiKey
      * @param $set
      * @param bool $expected
      *
@@ -49,8 +60,10 @@ class TestSesion extends TestCase
      *
      * @runInSeparateProcess
      */
-    public function testHas(string $name, $set, bool $expected): void
+    public function testHas(string $name, ?string $multiKey, $set, bool $expected): void
     {
+        if (!is_null($multiKey)) Session::setMultiKey($multiKey);
+
         if ($set) {
             Session::set($name, $name);
         } else {
@@ -68,11 +81,25 @@ class TestSesion extends TestCase
         return [
             [
                 'test_key',
+                null,
                 true,
                 true,
             ],
             [
                 'test_key',
+                null,
+                false,
+                false,
+            ],
+            [
+                'test_key',
+                'cse',
+                true,
+                true,
+            ],
+            [
+                'test_key',
+                'cse',
                 false,
                 false,
             ],
@@ -83,14 +110,17 @@ class TestSesion extends TestCase
      * @param string $name
      * @param $value
      * @param null|string $default
+     * @param null|string $multiKey
      * @param bool $set
      *
      * @dataProvider providerGet
      *
      * @runInSeparateProcess
      */
-    public function testGet(string $name, $value, ?string $default, bool $set): void
+    public function testGet(string $name, $value, ?string $default, ?string $multiKey, bool $set): void
     {
+        if (!is_null($multiKey)) Session::setMultiKey($multiKey);
+
         if ($set) {
             Session::set($name, $value);
         } else {
@@ -110,12 +140,28 @@ class TestSesion extends TestCase
                 'test_key',
                 'test_value',
                 null,
+                null,
                 true,
             ],
             [
                 'test_default_key',
                 'default_value',
                 'default_value',
+                null,
+                false,
+            ],
+            [
+                'test_key',
+                'test_value',
+                null,
+                'cse',
+                true,
+            ],
+            [
+                'test_default_key',
+                'default_value',
+                'default_value',
+                'cse',
                 false,
             ],
         ];
@@ -124,19 +170,23 @@ class TestSesion extends TestCase
     /**
      * @param string $name
      * @param $default
+     * @param null|string $multiKey
      * @param bool $set
      *
      * @dataProvider providerGetNotEmpty
      *
      * @runInSeparateProcess
      */
-    public function testGetNotEmpty(string $name, $default, bool $set): void
+    public function testGetNotEmpty(string $name, $default, ?string $multiKey, bool $set): void
     {
+        if (!is_null($multiKey)) Session::setMultiKey($multiKey);
+
         if ($set) {
             Session::set($name, $name);
         } else {
             Session::remove($name);
         }
+
         $this->assertEquals($name, Session::getNotEmpty($name, $default));
     }
 
@@ -149,11 +199,25 @@ class TestSesion extends TestCase
             [
                 'test_get_not_empty',
                 null,
+                null,
                 true,
             ],
             [
                 'test_default',
                 'test_default',
+                null,
+                false,
+            ],
+            [
+                'test_get_not_empty',
+                null,
+                'cse',
+                true,
+            ],
+            [
+                'test_default',
+                'test_default',
+                'cse',
                 false,
             ],
         ];
@@ -161,18 +225,23 @@ class TestSesion extends TestCase
 
     /**
      * @param string $name
+     * @param null|string $multiKey
      * @param bool $set
      *
      * @dataProvider providerRemove
      *
      * @runInSeparateProcess
      */
-    public function testRemove(string $name, bool $set): void
+    public function testRemove(string $name, ?string $multiKey, bool $set): void
     {
+        if (!is_null($multiKey)) Session::setMultiKey($multiKey);
+
         if ($set) {
             Session::set($name, $name);
         }
+
         Session::remove($name);
+
         $this->assertFalse(Session::has($name));
     }
 
@@ -181,16 +250,25 @@ class TestSesion extends TestCase
      */
     public function providerRemove(): array
     {
-        $key1 = uniqid('key1_');
-        $key2 = uniqid('key2_');
-
         return [
             [
-                $key1,
+                uniqid('key1_'),
+                null,
                 true,
             ],
             [
-                $key2,
+                uniqid('key2_'),
+                null,
+                false,
+            ],
+            [
+                uniqid('key3_'),
+                'cse',
+                true,
+            ],
+            [
+                uniqid('key4_'),
+                'cse',
                 false,
             ],
         ];
@@ -198,14 +276,17 @@ class TestSesion extends TestCase
 
     /**
      * @param array $names
+     * @param null|string $multiKey
      * @param array $expected
      *
      * @dataProvider providerAll
      *
      * @runInSeparateProcess
      */
-    public function testAll(array $names, array $expected): void
+    public function testAll(array $names, ?string $multiKey, array $expected): void
     {
+        if (!is_null($multiKey)) Session::setMultiKey($multiKey);
+
         foreach ($names as $name) {
             Session::set($name, $name);
         }
@@ -221,10 +302,22 @@ class TestSesion extends TestCase
         return [
             [
                 ['test_name_1', 'test_name_2'],
+                null,
                 ['test_name_1' => 'test_name_1', 'test_name_2' => 'test_name_2'],
             ],
             [
                 [],
+                null,
+                [],
+            ],
+            [
+                ['test_name_1', 'test_name_2'],
+                'cse',
+                ['test_name_1' => 'test_name_1', 'test_name_2' => 'test_name_2'],
+            ],
+            [
+                [],
+                'cse',
                 [],
             ],
         ];
