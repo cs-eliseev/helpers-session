@@ -94,3 +94,9 @@ $_SESSION['example'] = 1;
 Session::clear();
 var_dump($_SESSION);
 echo PHP_EOL;
+
+// Example: destroy
+// false
+Session::destroy();
+var_dump(session_status() === PHP_SESSION_ACTIVE);
+echo PHP_EOL;
