@@ -338,7 +338,7 @@ Session::all();
 // ['example_key_2' => 'example_value_2']
 ```
 
-**Clear session data**
+**CLEAR session data**
 
 Example:
 ```php
@@ -359,7 +359,7 @@ Session::claer();
 // ['example_key' => 'example_value']
 ```
 
-**Destroy session**
+**DESTROY session**
 
 Example:
 ```php
@@ -367,6 +367,18 @@ Session::start();
 // session_status() === PHP_SESSION_ACTIVE => true
 Session::destroy();
 // session_status() === PHP_SESSION_ACTIVE => false
+```
+
+**IS START session**
+
+Example:
+```php
+Session::start();
+Session::isStart();
+// true
+Session::destroy();
+Session::isStart();
+// false
 ```
 
 
