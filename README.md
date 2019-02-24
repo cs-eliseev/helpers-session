@@ -359,6 +359,16 @@ Session::claer();
 // ['example_key' => 'example_value']
 ```
 
+**Destroy session**
+
+Example:
+```php
+Session::start();
+// session_status() === PHP_SESSION_ACTIVE => true
+Session::destroy();
+// session_status() === PHP_SESSION_ACTIVE => false
+```
+
 
 ## License
 
