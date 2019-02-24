@@ -329,13 +329,34 @@ Session::all();
 */
 ```
 
-Use view multi key:
+Use multi key:
 ```php
 Session::set('example_key', 'example_value');
 Session::setMultiKey('cse');
 Session::set('example_key_2', 'example_value_2');
 Session::all();
 // ['example_key_2' => 'example_value_2']
+```
+
+**Clear session data**
+
+Example:
+```php
+Session::set('example_key', 'example_value');
+Session::setMultiKey('cse');
+Session::set('example_key_2', 'example_value_2');
+Session::setMultiKey();
+Session::claer();
+// []
+```
+
+Use multi key:
+```php
+Session::set('example_key', 'example_value');
+Session::setMultiKey('cse');
+Session::set('example_key_2', 'example_value_2');
+Session::claer();
+// ['example_key' => 'example_value']
 ```
 
 
