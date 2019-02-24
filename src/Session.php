@@ -116,7 +116,7 @@ class Session
      *
      * @param null|string $multiKey
      */
-    public static function setMultiKey(?string $multiKey): void
+    public static function setMultiKey(?string $multiKey = null): void
     {
         self::$multiKey = empty($multiKey) ? null : $multiKey;
     }
