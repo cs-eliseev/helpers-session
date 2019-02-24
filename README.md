@@ -196,37 +196,37 @@ Session::set('example_key', 'example_value');
 Session::setMultiKey('cse');
 Session::set('example_key_2', 'example_value_2');
 /**
-[
-    'example_key' => 'example_value',
-    'cse' => [
-        'example_key_2' => 'example_value_2'
-    ]
-]
+* [
+*     'example_key' => 'example_value',
+*     'cse' => [
+*         'example_key_2' => 'example_value_2'
+*     ]
+* ]
 */
 Session::set('example_key_3', 'example_value_3');
 /**
-[
-    'example_key' => 'example_value',
-    'cse' => [
-        'example_key_2' => 'example_value_2',
-        'example_key_3' => 'example_value_3'
-    ]
-]
+* [
+*     'example_key' => 'example_value',
+*     'cse' => [
+*         'example_key_2' => 'example_value_2',
+*         'example_key_3' => 'example_value_3'
+*     ]
+* ]
 */
 Session::setMultiKey();
 Session::set('example_key_4', 'example_value_4');
 /**
-[
-    'example_key' => 'example_value',
-    'cse' => [
-        'example_key_2' => 'example_value_2',
-        'example_key_3' => 'example_value_3'
-    ],
-    'example_key_4' => 'example_value_4',
-    'example' => [
-        'example_key_5' => 'example_value_5'
-    ],
-]
+* [
+*     'example_key' => 'example_value',
+*     'cse' => [
+*         'example_key_2' => 'example_value_2',
+*         'example_key_3' => 'example_value_3'
+*     ],
+*     'example_key_4' => 'example_value_4',
+*     'example' => [
+*         'example_key_5' => 'example_value_5'
+*     ],
+* ]
 */
 Session::setMultiKey('example');
 Session::set('example_key_5', 'example_value_5');
@@ -268,45 +268,45 @@ $extend->setSessionData('example_key_0', 'example_value_0');
 // ['example_key_0' => 'example_value_0']
 $cse->setSessionData();
 /**
-[
-    'example_key_0' => 'example_value_0',
-    'cse' => [
-        'example_key_1' => 'example_value_1'
-    ]
-]
+* [
+*     'example_key_0' => 'example_value_0',
+*     'cse' => [
+*         'example_key_1' => 'example_value_1'
+*     ]
+* ]
 */
 $extend->setSessionData('example_key_1_1', 'example_value_1_1');
 /**
-[
-    'example_key_0' => 'example_value_0',
-    'cse' => [
-        'example_key_1' => 'example_value_1',
-        'example_key_1_1' => 'example_value_1_1'
-    ]
-]
+* [
+*     'example_key_0' => 'example_value_0',
+*     'cse' => [
+*         'example_key_1' => 'example_value_1',
+*         'example_key_1_1' => 'example_value_1_1'
+*     ]
+* ]
 */
 $default->setSessionData();
 /**
-[
-    'example_key_0' => 'example_value_0',
-    'cse' => [
-        'example_key_1' => 'example_value_1',
-        'example_key_1_1' => 'example_value_1_1'
-    ],
-    'example_key_2' => 'example_value_2'
-]
+* [
+*     'example_key_0' => 'example_value_0',
+*     'cse' => [
+*         'example_key_1' => 'example_value_1',
+*         'example_key_1_1' => 'example_value_1_1'
+*     ],
+*     'example_key_2' => 'example_value_2'
+* ]
 */
 $extend->setSessionData('example_key_2_1', 'example_value_2_1');
 /**
-[
-    'example_key_0' => 'example_value_0',
-    'cse' => [
-        'example_key_1' => 'example_value_1',
-        'example_key_1_1' => 'example_value_1_1'
-    ],
-    'example_key_2' => 'example_value_2',
-    'example_key_2_1' => 'example_value_2_1'
-]
+* [
+*     'example_key_0' => 'example_value_0',
+*     'cse' => [
+*         'example_key_1' => 'example_value_1',
+*         'example_key_1_1' => 'example_value_1_1'
+*     ],
+*     'example_key_2' => 'example_value_2',
+*     'example_key_2_1' => 'example_value_2_1'
+* ]
 */
 ```
 
@@ -320,12 +320,12 @@ Session::set('example_key_2', 'example_value_2');
 Session::setMultiKey();
 Session::all();
 /**
-[
-    'example_key' => 'example_key',
-    'cse' => [
-        'example_key_2' => 'example_value_2'
-    ]
-]
+* [
+*     'example_key' => 'example_key',
+*     'cse' => [
+*         'example_key_2' => 'example_value_2'
+*     ]
+* ]
 */
 ```
 
