@@ -187,6 +187,129 @@ Session::has('example_key_2');
 // false
 ```
 
+**SET MULTI KEY session**
+
+Example:
+```php
+Session::set('example_key', 'example_value');
+// ['example_key' => 'example_value']
+Session::setMultiKey('cse');
+Session::set('example_key_2', 'example_value_2');
+/**
+[
+    'example_key' => 'example_value',
+    'cse' => [
+        'example_key_2' => 'example_value_2'
+    ]
+]
+*/
+Session::set('example_key_3', 'example_value_3');
+/**
+[
+    'example_key' => 'example_value',
+    'cse' => [
+        'example_key_2' => 'example_value_2',
+        'example_key_3' => 'example_value_3'
+    ]
+]
+*/
+Session::setMultiKey();
+Session::set('example_key_4', 'example_value_4');
+/**
+[
+    'example_key' => 'example_value',
+    'cse' => [
+        'example_key_2' => 'example_value_2',
+        'example_key_3' => 'example_value_3'
+    ],
+    'example_key_4' => 'example_value_4',
+    'example' => [
+        'example_key_5' => 'example_value_5'
+    ],
+]
+*/
+Session::setMultiKey('example');
+Session::set('example_key_5', 'example_value_5');
+```
+
+Global use:
+```php
+class DefaultSessionData
+{
+    public function setSessionData(): void
+    {
+        Session::setMultiKey();
+        Session::set('example_key_2', 'example_value_2');
+    }
+}
+
+class CseSessionData
+{
+    public function setSessionData(): void
+    {
+        Session::setMultiKey('cse');
+        Session::set('example_key_1', 'example_value_1');
+    }
+}
+
+class ExtendSessionData
+{
+    public function setSessionData(string $key, string $value): void
+    {
+        Session::set($key, $value);
+    }
+}
+
+$default = new DefaultSessionData();
+$cse = new CseSessionData();
+$extend = new ExtendSessionData();
+
+$extend->setSessionData('example_key_0', 'example_value_0');
+// ['example_key_0' => 'example_value_0']
+$cse->setSessionData();
+/**
+[
+    'example_key_0' => 'example_value_0',
+    'cse' => [
+        'example_key_1' => 'example_value_1'
+    ]
+]
+*/
+$extend->setSessionData('example_key_1_1', 'example_value_1_1');
+/**
+[
+    'example_key_0' => 'example_value_0',
+    'cse' => [
+        'example_key_1' => 'example_value_1',
+        'example_key_1_1' => 'example_value_1_1'
+    ]
+]
+*/
+$default->setSessionData();
+/**
+[
+    'example_key_0' => 'example_value_0',
+    'cse' => [
+        'example_key_1' => 'example_value_1',
+        'example_key_1_1' => 'example_value_1_1'
+    ],
+    'example_key_2' => 'example_value_2'
+]
+*/
+$extend->setSessionData('example_key_2_1', 'example_value_2_1');
+/**
+[
+    'example_key_0' => 'example_value_0',
+    'cse' => [
+        'example_key_1' => 'example_value_1',
+        'example_key_1_1' => 'example_value_1_1'
+    ],
+    'example_key_2' => 'example_value_2',
+    'example_key_2_1' => 'example_value_2_1'
+]
+*/
+```
+
 
 ## License
 
