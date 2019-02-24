@@ -53,7 +53,7 @@ echo PHP_EOL;
 Session::setMultiKey('cse');
 
 // Example: set
-// ['example_key' => 'example_value']
+// ['cse' => ['example_key' => 'example_value']]
 Session::set('example_key', 'example_value');
 echo PHP_EOL;
 

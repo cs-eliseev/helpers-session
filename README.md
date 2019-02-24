@@ -92,55 +92,98 @@ Session::set('example_key', 'example_value');
 // ['example_key' => 'example_value']
 ```
 
+Use multi key:
+```php
+Session::setMultiKey('cse');
+Session::set('example_key_2', 'example_value_2');
+// ['cse' => ['example_key_2' => 'example_value_2']]
+```
+
 **HAS session**
 
 Example:
 ```php
+Session::set('example_key', 'example_value');
 Session::has('example_key');
 // true
+```
+
+Use multi key:
+```php
+Session::setMultiKey('cse');
+Session::has('example_key');
+// false
 ```
 
 **GET session**
 
 Example:
 ```php
+Session::set('example_key', 'example_value');
 Session::get('example_key');
 // example_value
 ```
 
+Use multi key:
+```php
+Session::setMultiKey('cse');
+Session::set('example_key_2', 'example_value_2');
+Session::get('example_key_2');
+// example_value_2
+```
+
 Set default value is not exist session:
 ```php
-Cookie::get('example_key_2', 'example_value_2');
-// example_value_2
+Cookie::get('example_key_3', 'example_default_value_3');
+// example_default_value_3
 ```
 
 **GET NOT EMPTY session**
 
 Example:
 ```php
-Session::get('example_key', 'default_value');
+Session::set('example_key', 'example_value');
+Session::getNotEmpty('example_key', 'example_default_value');
 // example_value
+```
+
+Use multi key:
+```php
+Session::setMultiKey('cse');
+Session::set('example_key_2', 'example_value_2');
+Session::getNotEmpty('example_key_2');
+// example_value_2
 ```
 
 Set default value is not exist session:
 ```php
-Cookie::get('example_key_2', 'default_value');
-// default_value
+Cookie::getNotEmpty('example_key_3', 'example_default_value_3');
+// example_default_value_3
 ```
 
 Set default value empty session data:
 ```php
-Session::set('example_key', '');
-Cookie::get('example_key', 'default_value');
-// default_value
+Session::set('example_key_4', '');
+Cookie::getNotEmpty('example_key_4', 'example_default_value_4');
+// example_default_value_4
 ```
 
 **REMOVE session**
 
 Example:
 ```php
+Session::set('example_key', 'example_value');
 Session::remove('example_key');
 Session::has('example_key');
+// false
+```
+
+Use multi key:
+```php
+Session::setMultiKey('cse');
+Session::set('example_key_2', 'example_value_2');
+Session::remove('example_key_2');
+Session::has('example_key_2');
 // false
 ```
 
