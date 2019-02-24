@@ -310,6 +310,34 @@ $extend->setSessionData('example_key_2_1', 'example_value_2_1');
 */
 ```
 
+**Get ALL session data**
+
+Example:
+```php
+Session::set('example_key', 'example_value');
+Session::setMultiKey('cse');
+Session::set('example_key_2', 'example_value_2');
+Session::setMultiKey();
+Session::all();
+/**
+[
+    'example_key' => 'example_key',
+    'cse' => [
+        'example_key_2' => 'example_value_2'
+    ]
+]
+*/
+```
+
+Use view multi key:
+```php
+Session::set('example_key', 'example_value');
+Session::setMultiKey('cse');
+Session::set('example_key_2', 'example_value_2');
+Session::all();
+// ['example_key_2' => 'example_value_2']
+```
+
 
 ## License
 
