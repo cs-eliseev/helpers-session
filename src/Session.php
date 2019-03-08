@@ -110,6 +110,16 @@ class Session
     }
 
     /**
+     * Get all session data
+     *
+     * @return array
+     */
+    public static function all(): array
+    {
+        return is_null(self::$multiKey) ? $_SESSION : (array_key_exists(self::$multiKey, $_SESSION) ? $_SESSION[self::$multiKey] : []);
+    }
+
+    /**
      * Set multi key
      *
      * @example $_SESSION[$multiKey][$key]
@@ -119,16 +129,6 @@ class Session
     public static function setMultiKey(?string $multiKey = null): void
     {
         self::$multiKey = empty($multiKey) ? null : $multiKey;
-    }
-
-    /**
-     * Get all session data
-     *
-     * @return null|array
-     */
-    public static function all(): ?array
-    {
-        return is_null(self::$multiKey) ? $_SESSION : $_SESSION[self::$multiKey];
     }
 
     /**
