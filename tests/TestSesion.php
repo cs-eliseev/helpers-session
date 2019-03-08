@@ -28,7 +28,7 @@ class TestSesion extends TestCase
 
         Session::set($name, $value);
 
-        $this->assertTrue(!empty($_SESSION[$name]));
+        $this->assertTrue(!empty(Session::get($name)));
     }
 
     /**
@@ -287,8 +287,12 @@ class TestSesion extends TestCase
     {
         if (!is_null($multiKey)) Session::setMultiKey($multiKey);
 
-        foreach ($names as $name) {
-            Session::set($name, $name);
+        if (!empty($names)) {
+            foreach ($names as $name) {
+                Session::set($name, $name);
+            }
+        } else {
+            Session::start();
         }
 
         $this->assertEquals($expected, Session::all());
@@ -338,7 +342,7 @@ class TestSesion extends TestCase
 
     /**
      * @param string $name
-     * @param null|string $multiKey\
+     * @param null|string $multiKey
      *
      * @dataProvider providerClear
      *
@@ -348,7 +352,13 @@ class TestSesion extends TestCase
     {
         if (!is_null($multiKey)) Session::setMultiKey($multiKey);
 
-        Session::set($name, $name);
+        if (empty($name)) {
+            Session::start();
+        } else {
+            Session::set($name, $name);
+        }
+
+        Session::clear();
 
         $this->assertTrue(empty(Session::all()));
     }
@@ -364,7 +374,7 @@ class TestSesion extends TestCase
                 null
             ],
             [
-                [],
+                '',
                 null
             ],
             [
@@ -372,7 +382,7 @@ class TestSesion extends TestCase
                 'cse'
             ],
             [
-                [],
+                '',
                 'cse'
             ],
         ];
