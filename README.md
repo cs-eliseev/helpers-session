@@ -29,14 +29,18 @@ Despite using PHP as the main programming language for the Internet, its functio
 
 CSE HELPERS was created for the rapid development of web applications.
 
-**CSE Helpers projec:**
-* [Word CSE helpers](https://github.com/cs-eliseev/helpers-word)
-* [Json CSE helpers](https://github.com/cs-eliseev/helpers-json)
+**CSE Helpers project:**
+* [Array CSE helpers](https://github.com/cs-eliseev/helpers-arrays)
 * [Cookie CSE helpers](https://github.com/cs-eliseev/helpers-cookie)
+* [Date CSE helpers](https://github.com/cs-eliseev/helpers-date)
+* [Email CSE helpers](https://github.com/cs-eliseev/helpers-email)
+* [IP CSE helpers](https://github.com/cs-eliseev/helpers-ip)
+* [Json CSE helpers](https://github.com/cs-eliseev/helpers-json)
+* [Math Converter CSE helpers](https://github.com/cs-eliseev/helpers-math-converter)
+* [Phone CSE helpers](https://github.com/cs-eliseev/helpers-phone)
 * [Request CSE helpers](https://github.com/cs-eliseev/helpers-request)
 * [Session CSE helpers](https://github.com/cs-eliseev/helpers-session)
-* [Date CSE helpers](https://github.com/cs-eliseev/helpers-date)
-* [IP CSE helpers](https://github.com/cs-eliseev/helpers-ip)
+* [Word CSE helpers](https://github.com/cs-eliseev/helpers-word)
 
 Below you will find some information on how to init library and perform common commands.
 
