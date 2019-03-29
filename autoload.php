@@ -15,7 +15,7 @@ switch (true) {
         while ($iterator->valid()) {
             $item = $iterator->current();
 
-            if($item->isFile()) {
+            if ($item->isFile()) {
                 require_once $path . DIRECTORY_SEPARATOR . $item->getFilename();
             }
 
