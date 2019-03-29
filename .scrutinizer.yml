@@ -1,0 +1,24 @@
+filter:
+  excluded_paths:
+    - tests/
+    - examples/
+  dependency_paths:
+    - vendor/
+
+checks:
+  php: true
+
+build:
+  nodes:
+    analysis:
+      environment:
+        php:
+          version: 7.3
+      project_setup:
+        override: true
+      tests:
+        override:
+          - php-scrutinizer-run
+  dependencies:
+    override:
+      - composer install --ignore-platform-reqs --no-interaction
