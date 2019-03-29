@@ -2,14 +2,22 @@ language: php
 
 sudo: false
 
+env:
+  global:
+    - CODECOV_TOKEN=
+
 matrix:
   include:
     - php: 7.1
     - php: 7.2
     - php: 7.3
+      env: PHPUNIT_COVERAGE_TEST=1
 
 before_script:
   - composer install
 
 script:
   - phpunit
+
+after_success:
+  - if [[ $PHPUNIT_COVERAGE_TEST ]]; then bash <(curl -s https://codecov.io/bash) -f report/coverage.xml -t $CODECOV_TOKEN; fi
