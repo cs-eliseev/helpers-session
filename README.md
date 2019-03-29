@@ -1,6 +1,11 @@
 SESSION CSE HELPERS
 =======
 
+[![Packagist](https://img.shields.io/packagist/v/cse/helpers-json.svg?style=flat-square)](https://packagist.org/packages/cse/helpers-json)
+[![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.1-8892BF.svg?style=flat-square)](https://packagist.org/packages/cse/helpers-json)
+[![Packagist](https://img.shields.io/packagist/l/cse/helpers-json.svg?style=flat-square)](https://github.com/cs-eliseev/helpers-json/blob/master/LICENSE.md)
+[![GitHub repo size](https://img.shields.io/github/repo-size/cs-eliseev/helpers-json.svg?style=flat-square)](https://github.com/cs-eliseev/helpers-json/archive/master.zip)
+
 The helpers allows you to easily manage session data. START, SET, GET DELETE, HAS method session - all this is available in this library.
 
 Project repository: https://github.com/cs-eliseev/helpers-session
