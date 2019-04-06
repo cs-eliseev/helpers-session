@@ -1,3 +1,5 @@
+English | [Русский](https://github.com/cs-eliseev/helpers-session/blob/master/README.ru_RU.md)
+
 SESSION CSE HELPERS
 =======
 
@@ -14,6 +16,7 @@ The helpers allows you to easily manage session data. START, SET, GET DELETE, HA
 
 Project repository: https://github.com/cs-eliseev/helpers-session
 
+**DEMO**
 ```php
 Session::set(
     'example_key',
