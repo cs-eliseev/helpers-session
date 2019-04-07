@@ -1,6 +1,6 @@
 [English](https://github.com/cs-eliseev/helpers-session/blob/master/README.md) | Русский
 
-REQUEST CSE HELPERS
+SESSION CSE HELPERS
 =======
 
 [![Travis (.org)](https://img.shields.io/travis/cs-eliseev/helpers-session.svg?style=flat-square)](https://travis-ci.org/cs-eliseev/helpers-session)
