@@ -1,7 +1,7 @@
 {
     "name": "cse/helpers-session",
     "description": "The helpers allows you to easily manage session data. START, SET, GET DELETE, HAS method session - all this is available in this library.",
-    "keywords": ["session", "cse", "cs-eliseev", "framework", "basic", "library", "project"],
+    "keywords": ["session", "sessions", "cse", "collection", "collections", "tool", "tools", "utilities", "utils", "utility", "helper", "helpers", "library", "framework"],
     "homepage": "https://github.com/cs-eliseev/helpers-session",
     "type": "library",
     "license": "MIT",
