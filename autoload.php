@@ -8,7 +8,7 @@ switch (true) {
         require_once __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'autoload.php';
         break;
     default:
-        requeirFiles( __DIR__ . DIRECTORY_SEPARATOR . 'src');
+        requireFiles(__DIR__ . DIRECTORY_SEPARATOR . 'src');
 
         break;
 }
@@ -16,7 +16,7 @@ switch (true) {
 /**
  * @param string $path
  */
-function requeirFiles(string $path)
+function requireFiles(string $path)
 {
     $iterator = new DirectoryIterator($path);
 
@@ -27,7 +27,7 @@ function requeirFiles(string $path)
             if ($item->isFile()) {
                 require_once $path . DIRECTORY_SEPARATOR . $item->getFilename();
             } elseif ($item->isDir()) {
-                requeirFiles($item->getPathname());
+                requireFiles($item->getPathname());
             }
         }
 
