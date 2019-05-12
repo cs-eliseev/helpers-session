@@ -7,20 +7,23 @@ use cse\helpers\Session;
 // Example: start
 $label = 'Start: ';
 // true
-var_dump($label . Session::start());
+echo $label . PHP_EOL;
+var_dump(Session::start());
 echo PHP_EOL;
 
 // Example: set
 $label = 'Set: ';
 // ['example_key' => 'example_value']
 Session::set('example_key', 'example_value');
-var_dump($label . $_SESSION);
+echo $label . PHP_EOL;
+var_dump($_SESSION);
 echo PHP_EOL;
 
 // Example: has
 $label = 'Has: ';
 // true
-var_dump($label . Session::has('example_key'));
+echo $label . PHP_EOL;
+var_dump(Session::has('example_key'));
 echo PHP_EOL;
 
 // Example: get
